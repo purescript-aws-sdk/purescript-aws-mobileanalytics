@@ -20,12 +20,12 @@ import Data.StrMap as StrMap
 import AWS.Request as Request
 import AWS.Request.Types as Types
 
-serviceName = "MobileAnalytics" :: String
-
 
 -- | <p>The PutEvents operation records one or more events. You can have up to 1,500 unique custom events per app, any combination of up to 40 attributes and metrics per custom event, and any number of attribute or metric values.</p>
 putEvents :: forall eff. PutEventsInput -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
-putEvents = Request.request serviceName "putEvents" 
+putEvents = Request.request service method  where
+    service = Request.ServiceName "MobileAnalytics"
+    method = Request.MethodName "putEvents"
 
 
 -- | <p>An exception object returned when a request fails.</p>

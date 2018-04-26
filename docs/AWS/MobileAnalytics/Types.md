@@ -10,7 +10,7 @@ options :: Options
 
 ``` purescript
 newtype BadRequestException
-  = BadRequestException { message :: NullOrUndefined (String) }
+  = BadRequestException { message :: Maybe (String) }
 ```
 
 <p>An exception object returned when a request fails.</p>
@@ -35,7 +35,7 @@ Constructs BadRequestException from required parameters
 #### `newBadRequestException'`
 
 ``` purescript
-newBadRequestException' :: ({ message :: NullOrUndefined (String) } -> { message :: NullOrUndefined (String) }) -> BadRequestException
+newBadRequestException' :: ({ message :: Maybe (String) } -> { message :: Maybe (String) }) -> BadRequestException
 ```
 
 Constructs BadRequestException's fields from required parameters
@@ -44,7 +44,7 @@ Constructs BadRequestException's fields from required parameters
 
 ``` purescript
 newtype Event
-  = Event { eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: NullOrUndefined (Session), version :: NullOrUndefined (String10Chars), attributes :: NullOrUndefined (MapOfStringToString), metrics :: NullOrUndefined (MapOfStringToNumber) }
+  = Event { eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: Maybe (Session), version :: Maybe (String10Chars), attributes :: Maybe (MapOfStringToString), metrics :: Maybe (MapOfStringToNumber) }
 ```
 
 <p>A JSON object representing a batch of unique event occurrences in your app.</p>
@@ -69,7 +69,7 @@ Constructs Event from required parameters
 #### `newEvent'`
 
 ``` purescript
-newEvent' :: String50Chars -> ISO8601Timestamp -> ({ eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: NullOrUndefined (Session), version :: NullOrUndefined (String10Chars), attributes :: NullOrUndefined (MapOfStringToString), metrics :: NullOrUndefined (MapOfStringToNumber) } -> { eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: NullOrUndefined (Session), version :: NullOrUndefined (String10Chars), attributes :: NullOrUndefined (MapOfStringToString), metrics :: NullOrUndefined (MapOfStringToNumber) }) -> Event
+newEvent' :: String50Chars -> ISO8601Timestamp -> ({ eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: Maybe (Session), version :: Maybe (String10Chars), attributes :: Maybe (MapOfStringToString), metrics :: Maybe (MapOfStringToNumber) } -> { eventType :: String50Chars, timestamp :: ISO8601Timestamp, session :: Maybe (Session), version :: Maybe (String10Chars), attributes :: Maybe (MapOfStringToString), metrics :: Maybe (MapOfStringToNumber) }) -> Event
 ```
 
 Constructs Event's fields from required parameters
@@ -142,7 +142,7 @@ Encode MapOfStringToString
 
 ``` purescript
 newtype PutEventsInput
-  = PutEventsInput { events :: EventListDefinition, clientContext :: String, clientContextEncoding :: NullOrUndefined (String) }
+  = PutEventsInput { events :: EventListDefinition, clientContext :: String, clientContextEncoding :: Maybe (String) }
 ```
 
 <p>A container for the data needed for a PutEvent operation</p>
@@ -167,7 +167,7 @@ Constructs PutEventsInput from required parameters
 #### `newPutEventsInput'`
 
 ``` purescript
-newPutEventsInput' :: String -> EventListDefinition -> ({ events :: EventListDefinition, clientContext :: String, clientContextEncoding :: NullOrUndefined (String) } -> { events :: EventListDefinition, clientContext :: String, clientContextEncoding :: NullOrUndefined (String) }) -> PutEventsInput
+newPutEventsInput' :: String -> EventListDefinition -> ({ events :: EventListDefinition, clientContext :: String, clientContextEncoding :: Maybe (String) } -> { events :: EventListDefinition, clientContext :: String, clientContextEncoding :: Maybe (String) }) -> PutEventsInput
 ```
 
 Constructs PutEventsInput's fields from required parameters
@@ -176,7 +176,7 @@ Constructs PutEventsInput's fields from required parameters
 
 ``` purescript
 newtype Session
-  = Session { id :: NullOrUndefined (String50Chars), duration :: NullOrUndefined (Number), startTimestamp :: NullOrUndefined (ISO8601Timestamp), stopTimestamp :: NullOrUndefined (ISO8601Timestamp) }
+  = Session { id :: Maybe (String50Chars), duration :: Maybe (Number), startTimestamp :: Maybe (ISO8601Timestamp), stopTimestamp :: Maybe (ISO8601Timestamp) }
 ```
 
 <p>Describes the session. Session information is required on ALL events.</p>
@@ -201,7 +201,7 @@ Constructs Session from required parameters
 #### `newSession'`
 
 ``` purescript
-newSession' :: ({ id :: NullOrUndefined (String50Chars), duration :: NullOrUndefined (Number), startTimestamp :: NullOrUndefined (ISO8601Timestamp), stopTimestamp :: NullOrUndefined (ISO8601Timestamp) } -> { id :: NullOrUndefined (String50Chars), duration :: NullOrUndefined (Number), startTimestamp :: NullOrUndefined (ISO8601Timestamp), stopTimestamp :: NullOrUndefined (ISO8601Timestamp) }) -> Session
+newSession' :: ({ id :: Maybe (String50Chars), duration :: Maybe (Number), startTimestamp :: Maybe (ISO8601Timestamp), stopTimestamp :: Maybe (ISO8601Timestamp) } -> { id :: Maybe (String50Chars), duration :: Maybe (Number), startTimestamp :: Maybe (ISO8601Timestamp), stopTimestamp :: Maybe (ISO8601Timestamp) }) -> Session
 ```
 
 Constructs Session's fields from required parameters

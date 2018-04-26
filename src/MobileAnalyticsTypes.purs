@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -20,7 +19,7 @@ options = defaultOptions { unwrapSingleConstructors = true }
 
 -- | <p>An exception object returned when a request fails.</p>
 newtype BadRequestException = BadRequestException 
-  { "message" :: NullOrUndefined (String)
+  { "message" :: Maybe (String)
   }
 derive instance newtypeBadRequestException :: Newtype BadRequestException _
 derive instance repGenericBadRequestException :: Generic BadRequestException _
@@ -30,12 +29,12 @@ instance encodeBadRequestException :: Encode BadRequestException where encode = 
 
 -- | Constructs BadRequestException from required parameters
 newBadRequestException :: BadRequestException
-newBadRequestException  = BadRequestException { "message": (NullOrUndefined Nothing) }
+newBadRequestException  = BadRequestException { "message": Nothing }
 
 -- | Constructs BadRequestException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBadRequestException' :: ( { "message" :: NullOrUndefined (String) } -> {"message" :: NullOrUndefined (String) } ) -> BadRequestException
-newBadRequestException'  customize = (BadRequestException <<< customize) { "message": (NullOrUndefined Nothing) }
+newBadRequestException' :: ( { "message" :: Maybe (String) } -> {"message" :: Maybe (String) } ) -> BadRequestException
+newBadRequestException'  customize = (BadRequestException <<< customize) { "message": Nothing }
 
 
 
@@ -43,10 +42,10 @@ newBadRequestException'  customize = (BadRequestException <<< customize) { "mess
 newtype Event = Event 
   { "eventType" :: (String50Chars)
   , "timestamp" :: (ISO8601Timestamp)
-  , "session" :: NullOrUndefined (Session)
-  , "version" :: NullOrUndefined (String10Chars)
-  , "attributes" :: NullOrUndefined (MapOfStringToString)
-  , "metrics" :: NullOrUndefined (MapOfStringToNumber)
+  , "session" :: Maybe (Session)
+  , "version" :: Maybe (String10Chars)
+  , "attributes" :: Maybe (MapOfStringToString)
+  , "metrics" :: Maybe (MapOfStringToNumber)
   }
 derive instance newtypeEvent :: Newtype Event _
 derive instance repGenericEvent :: Generic Event _
@@ -56,12 +55,12 @@ instance encodeEvent :: Encode Event where encode = genericEncode options
 
 -- | Constructs Event from required parameters
 newEvent :: String50Chars -> ISO8601Timestamp -> Event
-newEvent _eventType _timestamp = Event { "eventType": _eventType, "timestamp": _timestamp, "attributes": (NullOrUndefined Nothing), "metrics": (NullOrUndefined Nothing), "session": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing) }
+newEvent _eventType _timestamp = Event { "eventType": _eventType, "timestamp": _timestamp, "attributes": Nothing, "metrics": Nothing, "session": Nothing, "version": Nothing }
 
 -- | Constructs Event's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEvent' :: String50Chars -> ISO8601Timestamp -> ( { "eventType" :: (String50Chars) , "timestamp" :: (ISO8601Timestamp) , "session" :: NullOrUndefined (Session) , "version" :: NullOrUndefined (String10Chars) , "attributes" :: NullOrUndefined (MapOfStringToString) , "metrics" :: NullOrUndefined (MapOfStringToNumber) } -> {"eventType" :: (String50Chars) , "timestamp" :: (ISO8601Timestamp) , "session" :: NullOrUndefined (Session) , "version" :: NullOrUndefined (String10Chars) , "attributes" :: NullOrUndefined (MapOfStringToString) , "metrics" :: NullOrUndefined (MapOfStringToNumber) } ) -> Event
-newEvent' _eventType _timestamp customize = (Event <<< customize) { "eventType": _eventType, "timestamp": _timestamp, "attributes": (NullOrUndefined Nothing), "metrics": (NullOrUndefined Nothing), "session": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing) }
+newEvent' :: String50Chars -> ISO8601Timestamp -> ( { "eventType" :: (String50Chars) , "timestamp" :: (ISO8601Timestamp) , "session" :: Maybe (Session) , "version" :: Maybe (String10Chars) , "attributes" :: Maybe (MapOfStringToString) , "metrics" :: Maybe (MapOfStringToNumber) } -> {"eventType" :: (String50Chars) , "timestamp" :: (ISO8601Timestamp) , "session" :: Maybe (Session) , "version" :: Maybe (String10Chars) , "attributes" :: Maybe (MapOfStringToString) , "metrics" :: Maybe (MapOfStringToNumber) } ) -> Event
+newEvent' _eventType _timestamp customize = (Event <<< customize) { "eventType": _eventType, "timestamp": _timestamp, "attributes": Nothing, "metrics": Nothing, "session": Nothing, "version": Nothing }
 
 
 
@@ -105,7 +104,7 @@ instance encodeMapOfStringToString :: Encode MapOfStringToString where encode = 
 newtype PutEventsInput = PutEventsInput 
   { "events" :: (EventListDefinition)
   , "clientContext" :: (String)
-  , "clientContextEncoding" :: NullOrUndefined (String)
+  , "clientContextEncoding" :: Maybe (String)
   }
 derive instance newtypePutEventsInput :: Newtype PutEventsInput _
 derive instance repGenericPutEventsInput :: Generic PutEventsInput _
@@ -115,21 +114,21 @@ instance encodePutEventsInput :: Encode PutEventsInput where encode = genericEnc
 
 -- | Constructs PutEventsInput from required parameters
 newPutEventsInput :: String -> EventListDefinition -> PutEventsInput
-newPutEventsInput _clientContext _events = PutEventsInput { "clientContext": _clientContext, "events": _events, "clientContextEncoding": (NullOrUndefined Nothing) }
+newPutEventsInput _clientContext _events = PutEventsInput { "clientContext": _clientContext, "events": _events, "clientContextEncoding": Nothing }
 
 -- | Constructs PutEventsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutEventsInput' :: String -> EventListDefinition -> ( { "events" :: (EventListDefinition) , "clientContext" :: (String) , "clientContextEncoding" :: NullOrUndefined (String) } -> {"events" :: (EventListDefinition) , "clientContext" :: (String) , "clientContextEncoding" :: NullOrUndefined (String) } ) -> PutEventsInput
-newPutEventsInput' _clientContext _events customize = (PutEventsInput <<< customize) { "clientContext": _clientContext, "events": _events, "clientContextEncoding": (NullOrUndefined Nothing) }
+newPutEventsInput' :: String -> EventListDefinition -> ( { "events" :: (EventListDefinition) , "clientContext" :: (String) , "clientContextEncoding" :: Maybe (String) } -> {"events" :: (EventListDefinition) , "clientContext" :: (String) , "clientContextEncoding" :: Maybe (String) } ) -> PutEventsInput
+newPutEventsInput' _clientContext _events customize = (PutEventsInput <<< customize) { "clientContext": _clientContext, "events": _events, "clientContextEncoding": Nothing }
 
 
 
 -- | <p>Describes the session. Session information is required on ALL events.</p>
 newtype Session = Session 
-  { "id" :: NullOrUndefined (String50Chars)
-  , "duration" :: NullOrUndefined (Number)
-  , "startTimestamp" :: NullOrUndefined (ISO8601Timestamp)
-  , "stopTimestamp" :: NullOrUndefined (ISO8601Timestamp)
+  { "id" :: Maybe (String50Chars)
+  , "duration" :: Maybe (Number)
+  , "startTimestamp" :: Maybe (ISO8601Timestamp)
+  , "stopTimestamp" :: Maybe (ISO8601Timestamp)
   }
 derive instance newtypeSession :: Newtype Session _
 derive instance repGenericSession :: Generic Session _
@@ -139,12 +138,12 @@ instance encodeSession :: Encode Session where encode = genericEncode options
 
 -- | Constructs Session from required parameters
 newSession :: Session
-newSession  = Session { "duration": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing), "startTimestamp": (NullOrUndefined Nothing), "stopTimestamp": (NullOrUndefined Nothing) }
+newSession  = Session { "duration": Nothing, "id": Nothing, "startTimestamp": Nothing, "stopTimestamp": Nothing }
 
 -- | Constructs Session's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSession' :: ( { "id" :: NullOrUndefined (String50Chars) , "duration" :: NullOrUndefined (Number) , "startTimestamp" :: NullOrUndefined (ISO8601Timestamp) , "stopTimestamp" :: NullOrUndefined (ISO8601Timestamp) } -> {"id" :: NullOrUndefined (String50Chars) , "duration" :: NullOrUndefined (Number) , "startTimestamp" :: NullOrUndefined (ISO8601Timestamp) , "stopTimestamp" :: NullOrUndefined (ISO8601Timestamp) } ) -> Session
-newSession'  customize = (Session <<< customize) { "duration": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing), "startTimestamp": (NullOrUndefined Nothing), "stopTimestamp": (NullOrUndefined Nothing) }
+newSession' :: ( { "id" :: Maybe (String50Chars) , "duration" :: Maybe (Number) , "startTimestamp" :: Maybe (ISO8601Timestamp) , "stopTimestamp" :: Maybe (ISO8601Timestamp) } -> {"id" :: Maybe (String50Chars) , "duration" :: Maybe (Number) , "startTimestamp" :: Maybe (ISO8601Timestamp) , "stopTimestamp" :: Maybe (ISO8601Timestamp) } ) -> Session
+newSession'  customize = (Session <<< customize) { "duration": Nothing, "id": Nothing, "startTimestamp": Nothing, "stopTimestamp": Nothing }
 
 
 
